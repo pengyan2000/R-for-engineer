@@ -1,0 +1,31 @@
+---
+title: "gapminder-wrangle"
+author: "Peng Zhang"
+date: "10/12/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+We will learn how to wrangle gapminder data using `dplyr`.
+```{r}
+library(tidyverse)
+```
+```{r}
+gapminder <- read_csv("data/gapminder.csv")
+```
+```{r}
+x <- filter(gapminder, country == "Brazil", year > 1986)  
+mean(x$lifeExp)  
+```
+```{r}
+gapminder %>%
+  filter(continent == "Asia",
+         year == 2007) %>%
+  mutate(pop_thousands = pop/1000) 
+```
+
